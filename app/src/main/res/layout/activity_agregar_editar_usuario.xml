@@ -62,14 +62,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#0b5345"
-            android:text="Guardar" />
+            android:text="Guardar"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#c0392b"
-            android:text="Cancelar" />
+            android:text="Cancelar"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
