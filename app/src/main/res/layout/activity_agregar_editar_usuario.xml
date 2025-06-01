@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#5D6D7E"
     android:orientation="vertical"
     android:padding="16dp">
+
     <EditText
-    android:id="@+id/editTextNombre"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Nombre" />
+        android:id="@+id/editTextNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre" />
 
     <EditText
         android:id="@+id/editTextApellido"
@@ -44,20 +46,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
         android:gravity="end"
-        android:layout_marginTop="16dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#145a32"
             android:text="Guardar" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#c0392b"
             android:text="Cancelar" />
 
     </LinearLayout>

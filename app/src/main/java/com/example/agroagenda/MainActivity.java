@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHelper = new UsuarioDBHelper(this);
+
+        // Insertar datos de ejemplo si la base de datos está vacía
+        if (dbHelper.getUsuariosCount() == 0) {
+            insertarDatosEjemplo();
+        }
+
         listaUsuarios = dbHelper.getAllUsuarios();
 
         recyclerViewUsuarios = findViewById(R.id.recyclerViewUsuarios);
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewUsuarios.setAdapter(adapter);
 
         editTextFiltro = findViewById(R.id.editTextFiltro);
-        btnFiltrar = findViewById(R.id.btnFiltrar);
+        //btnFiltrar = findViewById(R.id.btnFiltrar);
         btnAgregar = findViewById(R.id.btnAgregar);
 
         adapter.setOnItemClickListener(new UsuarioAdapter.OnItemClickListener() {
@@ -67,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Opcional: Filtrado en tiempo real mientras se escribe
         editTextFiltro.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -88,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
                 // No se necesita implementación aquí
             }
         });
+    }
+
+    private void insertarDatosEjemplo() {
+        dbHelper.agregarUsuario(new Usuario("Ana", "Pérez", "1001", "Analista", "Central", "IT"));
+        dbHelper.agregarUsuario(new Usuario("Carlos", "López", "2005", "Gerente", "Norte", "Finanzas"));
+        dbHelper.agregarUsuario(new Usuario("Sofía", "Gómez", "1010", "Desarrollador", "Central", "IT"));
+        dbHelper.agregarUsuario(new Usuario("Javier", "Vargas", "3022", "Cajero", "Sur", "Operaciones"));
+        dbHelper.agregarUsuario(new Usuario("Elena", "Ruiz", "2015", "Asistente", "Norte", "Legal"));
+        dbHelper.agregarUsuario(new Usuario("Martín", "Castro", "1015", "DBA", "Central", "IT"));
     }
 
     @Override
