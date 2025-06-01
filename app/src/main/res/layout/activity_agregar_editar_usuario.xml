@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#5D6D7E"
     android:orientation="vertical"
     android:padding="16dp">
@@ -10,38 +10,45 @@
         android:id="@+id/editTextNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre" />
+        android:hint="Nombre"
+        android:textColorHint="#FFFFFF" />
 
     <EditText
         android:id="@+id/editTextApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Apellido" />
+        android:hint="Apellido"
+        android:textColorHint="#FFFFFF" />
 
     <EditText
         android:id="@+id/editTextExtension"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Extensión"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:textColorHint="#FFFFFF" />
 
     <EditText
         android:id="@+id/editTextPuesto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Puesto" />
+        android:hint="Puesto"
+        android:textColorHint="#FFFFFF" />
 
     <EditText
         android:id="@+id/editTextSucursal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Sucursal" />
+        android:hint="Sucursal"
+        android:textColorHint="#FFFFFF" />
 
     <EditText
         android:id="@+id/editTextDepartamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Departamento" />
+        android:hint="Departamento"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +61,7 @@
             android:id="@+id/btnGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#145a32"
+            android:backgroundTint="#0b5345"
             android:text="Guardar" />
 
         <Button

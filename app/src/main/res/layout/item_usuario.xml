@@ -2,33 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#5D6D7E"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/textViewNombreApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:text="Nombre Apellido"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:text="Nombre Apellido" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewExtension"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Extensión: 1234" />
+        android:padding="5dp"
+        android:paddingTop="3dp"
+        android:text="Extensión: 1234"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textViewPuestoSucursal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Puesto - Sucursal" />
+        android:padding="5dp"
+        android:text="Puesto - Sucursal"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textViewDepartamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Departamento" />
+        android:padding="5dp"
+        android:text="Departamento"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
