@@ -9,6 +9,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private UsuarioDBHelper dbHelper;
     private EditText editTextFiltro;
     private Button btnAgregar;
+    private static final boolean DEVELOPER_MODE = true; // Cambiar a false en producción
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new UsuarioDBHelper(this);
 
-        // Insertar datos de ejemplo si la base de datos está vacía
-        if (dbHelper.getUsuariosCount() == 0) {
-            insertarDatosEjemplo();
+        // Resetear BD si es necesario (solo para desarrollo)
+        if (DEVELOPER_MODE) {
+            resetearBaseDatos();
+        }
+        // Lógica normal de producción
+        else if (dbHelper.getUsuariosCount() == 0) {
+            dbHelper.insertarDatosEjemplo();
         }
 
         listaUsuarios = dbHelper.getAllUsuarios();
@@ -82,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Método para forzar el reinicio
+    private void resetearBaseDatos() {
+        dbHelper.resetDatabase();
+        dbHelper.insertarDatosEjemplo();
+        Toast.makeText(this, "Base de datos restablecida", Toast.LENGTH_SHORT).show();
+    }
+
     private void insertarDatosEjemplo() {
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34021", "Gerente", "Higuey", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34022", "Sub-gerente", "Higuey", "N/A"));
@@ -117,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34082", "Oficial de Negocios", "Cotui", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34083", "Contable", "Cotui", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34084", "Analista", "Cotui", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34085", "Gerente", "Cotui", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34091", "Gerente", "La Vega", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34092", "Director Regional", "La Vega", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34093", "Contable", "La Vega", "N/A"));
@@ -146,8 +161,9 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34152", "Sub-gerente", "Seybo", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34153", "Analista", "Seybo", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34154", "Oficial de Negocios", "Seybo", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34155", "Contable", "Seybo", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34161", "Gerente", "Santiago", "N/A"));
-        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34162", "us", "Santiago", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34162", "sub-gerente", "Santiago", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34163", "Contable", "Santiago", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34164", "Analista", "Santiago", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34165", "Oficial de Negocios", "Santiago", "N/A"));
@@ -180,6 +196,57 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34222", "Contable", "Hato Mayor", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34223", "Analista", "Hato Mayor", "N/A"));
         dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34224", "Sub-gerente", "Hato Mayor", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34225", "Agente de Desarrollo", "Hato Mayor", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34231", "Agente de Desarrollo", "Moca", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34232", "Contable", "Moca", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34233", "Gerente", "Moca", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34234", "Sub-gerente", "Moca", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34235", "Oficial de Negocios", "Moca", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34241", "Oficial de Negocios", "Samana", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34242", "Oficial de Negocios", "Samana", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34243", "Contable", "Samana", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34244", "Sub-gerente", "Samana", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34245", "Gerente", "Samana", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34251", "Oficial de Negocios", "Bonao", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34252", "Analista", "Bonao", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34253", "Contable", "Bonao", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34254", "Sub-gerente", "Bonao", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34255", "Gerente", "Bonao", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34261", "Gerente", "Neyba", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34262", "Sub-gerente", "Neyba", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34263", "Contable", "Neyba", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34264", "Analista", "Neyba", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34265", "Oficial de Negocios", "Neyba", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34271", "Gerente", "Dahabon", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34272", "Sub-gerente", "Dahabon", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34273", "Analista", "Dahabon", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34274", "Oficial de Negocios", "Dahabon", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34275", "Oficial de Negocios", "Dahabon", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34281", "Gerente", "Sajoma", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34282", "Oficial de Negocios", "Sajoma", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34283", "Contable", "Sajoma", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34284", "Analista", "Sajoma", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34285", "Sub-gerente", "Sajoma", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34291", "Oficial de Negocios", "Rio San Juan", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34292", "Sub-gerente", "Rio San Juan", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34293", "Contable", "Rio San Juan", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34294", "Oficial de Negocios", "Rio San Juan", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34295", "Gerente", "Rio San Juan", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34311", "Gerente", "Salcedo", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34312", "Sub-gerente", "Salcedo", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34313", "Contable", "Salcedo", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34314", "Oficial de Negocios", "Salcedo", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34315", "Oficial de Negocios", "Salcedo", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34321", "Analista", "Monte Plata", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34322", "Oficial de Negocios", "Monte Plata", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34323", "Contable", "Monte Plata", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34324", "Gerente", "Monte Plata", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34325", "Oficial de Negocios", "Monte Plata", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34331", "Oficial de Negocios", "Constanza", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34332", "Contable", "Constanza", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34333", "Gerente", "Constanza", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34334", "Sub-gerente", "Constanza", "N/A"));
+        dbHelper.agregarUsuario(new Usuario("N/A", "N/A", "34335", "Oficial de Negocios", "Constanza", "N/A"));
     }
 
     @Override
