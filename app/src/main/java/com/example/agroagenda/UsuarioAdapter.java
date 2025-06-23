@@ -40,10 +40,11 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
     @Override
     public void onBindViewHolder(@NonNull UsuarioViewHolder holder, int position) {
         Usuario usuario = listaUsuarios.get(position);
-        holder.textViewNombreApellido.setText(usuario.getNombre() + " " + usuario.getApellido());
+        //holder.textViewNombreApellido.setText(usuario.getNombre() + " " + usuario.getApellido());
         holder.textViewExtension.setText("Extensión: " + usuario.getExtension());
-        holder.textViewPuestoSucursal.setText(usuario.getPuesto() + " - " + usuario.getSucursal());
-        holder.textViewDepartamento.setText("Departamento: " + usuario.getDepartamento());
+        holder.textViewPuesto.setText("Puesto: " + usuario.getPuesto());
+        holder.textViewSucursal.setText("Sucursal: " + usuario.getSucursal());
+        //holder.textViewDepartamento.setText("Departamento: " + usuario.getDepartamento());
     }
 
     @Override
@@ -54,15 +55,17 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
     public static class UsuarioViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewNombreApellido;
         public TextView textViewExtension;
-        public TextView textViewPuestoSucursal;
+        TextView textViewPuesto;
+        TextView textViewSucursal;
         public TextView textViewDepartamento;
 
         public UsuarioViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
-            textViewNombreApellido = itemView.findViewById(R.id.textViewNombreApellido);
+            //textViewNombreApellido = itemView.findViewById(R.id.textViewNombreApellido);
             textViewExtension = itemView.findViewById(R.id.textViewExtension);
-            textViewPuestoSucursal = itemView.findViewById(R.id.textViewPuestoSucursal);
-            textViewDepartamento = itemView.findViewById(R.id.textViewDepartamento);
+            textViewPuesto = itemView.findViewById(R.id.textViewPuesto);
+            textViewSucursal = itemView.findViewById(R.id.textViewSucursal);
+            //textViewDepartamento = itemView.findViewById(R.id.textViewDepartamento);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
